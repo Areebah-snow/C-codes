@@ -1,11 +1,10 @@
 #include  <stdio.h>
 #include <stdlib.h>
 
-float withdrawal(float deposit)
+float withdrawal(float amount ,float deposit, float order)
 {
     
-    float amount;
-    scanf("%f", &amount);
+  
     if(amount > deposit)
     {
         printf("Insufficient funds");
@@ -22,36 +21,30 @@ float withdrawal(float deposit)
         }
         else
         {
-             deposit =  -amount;
+             deposit -=amount;
             printf("Withdraw is Successful\n");
             printf("Current Balance= %.2f\n",  deposit);
         }
     }
     else
-    {
+    { 
 
          deposit = deposit - amount;
          printf("Withdraw Successful\n");    
          printf("Current Balance= %.2f\n", deposit);
         
-
     }
-  return 0;
+  return deposit;
 }
 
-void Deposit(float newdeposit, float initialDeposit)
+float Deposit(float newdeposit, float initialDeposit)
 {
-
-  
-    
 
     initialDeposit +=newdeposit;
 
     printf("Current Balance = %.2f", initialDeposit);
-    return; ///returns function
+    return initialDeposit; ///returns function
 }
-
-
 
 //////////////BALANCE FUNCTION///////////////
 float Balance(float balance)
@@ -59,26 +52,20 @@ float Balance(float balance)
        
       printf("Balance =%.2f", balance);
 }
-
-
-
 ///////////////////////PIN FUNCTION/////////////////
-void PIN(int pin, int newpin)
+int PIN(int pin, int actualPin)
 {
    
-    int i;
- 
-
+    int newpin;
   ///the secloop loops the code again if theres an error with the input on previous pin
     int secloop;
-    for(secloop = 0; secloop< 30; secloop++){
+    for(secloop = 0; secloop< 3; secloop++)
+    {
     printf("\t\t----You have selected Change PIN-----\n");
     printf("Enter previous PIN \n");
     scanf("%d", &pin);
      
-     
-    
-    if(pin != 1234 )
+    if(pin != actualPin )
     {
         printf("\n\nIncorrect! Please try again\n");
        continue;
@@ -91,11 +78,11 @@ void PIN(int pin, int newpin)
     }
 //////this inspects if the PIN inputted is correct ,the program proceeds
  
-    if(pin == 1234)
+    if(pin == actualPin)
     {
      int j;
      ////CHECKS if np is same as op to loop
-    for(j=0; j<10; j++){
+    for(j=0; j<3; j++){
         printf("Enter new pin\n");
         scanf("%d", &newpin);
      if(newpin == pin )
@@ -110,11 +97,11 @@ void PIN(int pin, int newpin)
      }
      else{
          printf("Your new PIN is %d", newpin);
-         newpin = pin;
         printf("\n\nNew PIN confirmed\n");
       
         break;
          }
     }
     }
+    return newpin;
 }

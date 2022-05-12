@@ -10,25 +10,28 @@
     float order;
     float newDeposit;
     float mainBalance;
-    int newpin;
+   
+    
 int main()
 {
     
+    int defaultPin = 1234;
 
    
     printf("Input initial deposit:\n");
     scanf("%f", &DepositMoney); /// store deposit input
     printf("Current Balance = %.2f\n", DepositMoney);
-     for (int i=0; i<10; i++)////first for loop to loop entire program if another transaction is requested
+     int UserPin = defaultPin;
+    for (int i=0; i<10; i++)////first for loop to loop entire program if another transaction is requested
     {
-    int UserPin = 1234, i;
+    
    ////second for loop to loop the request for PIN if user input doesnt match fixed PIN
-    for (i = 0; i < 6; i++)
+    for (int j = 0; j < 6; j++)
     {
         printf("Enter  PIN\n");
         scanf("%d", &UserPin);
 
-        if (UserPin != 1234)
+        if (UserPin !=  defaultPin)
         {
 
             printf("Incorrect PIN!\n");
@@ -57,7 +60,7 @@ scanf("%d", &transactionChoice);
         printf("\t\t\t\t--------Select amount----------- \n");
         printf(">>>1000\t\t>>>2000\n>>>3000\t\t>>>5000\n>>>10000\t>>>15000\n>>>20000\t>>>Enter '8' for other\n");
         scanf("%f", &amount);
-        withdrawal(DepositMoney);
+        DepositMoney = withdrawal(amount,DepositMoney, order);
     }
     else if(transactionChoice==2)
     {
@@ -65,8 +68,11 @@ scanf("%d", &transactionChoice);
     }
     else if(transactionChoice==3)
     {
-        PIN(UserPin,newpin);
-        UserPin = newpin;
+        int newpin = PIN(UserPin, defaultPin);
+
+        defaultPin = newpin;
+        printf("New PIN is %d", newpin);
+        printf("User PIN is %d", defaultPin);
         
     }
     else if(transactionChoice==4)
@@ -74,7 +80,7 @@ scanf("%d", &transactionChoice);
         
         printf("Enter amount you wish to deposit: \n");
         scanf("%f", &newDeposit);
-        Deposit(newDeposit, DepositMoney);
+        DepositMoney = Deposit(newDeposit, DepositMoney);
     }
      break;
    }
@@ -85,7 +91,7 @@ scanf("%d", &transactionChoice);
 
     if(answer== 1)
     {
-        UserPin = newpin;
+      
         continue;
     }
     else
@@ -98,5 +104,4 @@ scanf("%d", &transactionChoice);
 
 
 
-
-
+/*for (int k = 0; k < 6; k++)*/
