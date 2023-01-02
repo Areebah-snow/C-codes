@@ -1,11 +1,12 @@
-This project is an ATM program written with C language. This project makes use of functions that directs to each element of the menu. It consists of a header file that holds all the menu functions. 
+This is a compilation of all the exercises I've done using C
 
 DESCRIPTION 
-It allows users:
-- WITHDRAW CASH
-- CHECK BALANCE
-- DEPOSIT CASH
-- CHANGE PIN
+It consists of:
+- MINMAX getter
+- Temperature Converter
+- Spiral ARRAY
+- Even and Odd number Checker
+- And Much  More
 
 REQUIREMENTS
 - Requires an OS that has a C compiler installed.
